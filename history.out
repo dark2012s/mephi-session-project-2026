@@ -1,0 +1,109 @@
+    1  ls
+    2  sudo hostnamectl set-hostname mephi-2026.domain.local
+    3  hostnamectl 
+    4  ping -c 4 8.8.8.8 >ping.out
+    5  ls
+    6  cat ping.out
+    7  dnf update
+    8  sudo dnf update
+    9  sudo parted -s /dev/sdb mklabel gpt
+   10  sudo parted -s /dev/sdb mkpart primary ext4 0% 100%
+   11  sudo parted  /dev/sdb
+   12  sudo mkfs.ext4 -L MEPHI_WEB /dev/sdb1
+   13  lsblk
+   14  sudo blkid /dev/sdb1
+   15  ls
+   16  sudo mkdir /mephi-web
+   17  ls
+   18  ls -l
+   19  lsblk 
+   20  cat /etc/fstab 
+   21  sudo vim /etc/fstab 
+   22  sudo nano /etc/fstab 
+   23  systemctl daemon-reload 
+   24  mount
+   25  sudo nano /etc/fstab 
+   26  df
+   27  sudo mount /mephi-web/
+   28  df
+   29  sudo systemctl start nginx
+   30  sudo systemctl enable nginx
+   31  sudo systemctl status nginx
+   32  sudo journalctl -u nginx -b > ./journalctl.out
+   33  sudo nano /etc/fstab 
+   34  sudo mount /mephi-web/
+   35  systemctl daemon-reload 
+   36  df
+   37  cat ./journalctl.out 
+   38  sudo mkdir -p /data/mephi-2026
+   39  sudo groupadd developers
+   40  sudo useradd -u 5501 -G developers user1
+   41  sudo useradd -u 5502 -G developers user2
+   42  sudo useradd -u 5503 -G developers user3
+   43  sudo groupadd -g 4444 curators
+   44  sudo useradd -G curators curator1
+   45  sudo useradd -G curators curator2
+   46  sudo setfacl -m g:developers:rwx /data/mephi-2026
+   47  sudo setfacl -m g:curators:r-x /data/mephi-2026
+   48  sudo chmod o-rwx /data/mephi-2026
+   49  sudo getfacl /data/mephi-2026
+   50  sudo setfacl -d -m g:developers:rwx /data/mephi-2026
+   51  sudo getfacl /data/mephi-2026
+   52  sudo setfacl -d -m g:curators:r-x /data/mephi-2026
+   53  sudo getfacl /data/mephi-2026
+   54  sudo -u user1 tcpdump 
+   55  ls -l /usr/sbin/tcpdump 
+   56  sudo setcap cap_net_raw+ep /usr/sbin/tcpdump 
+   57  getcap /usr/sbin/tcpdump 
+   58  sudo -u user1 tcpdump 
+   59  getenforce 
+   60  sudo nano /etc/nginx/nginx.conf
+   61  ls -ldZ /mephi-web
+   62  sudo semanage fcontext -a -t httpd_sys_content_t "mephi-web(/.*)?"
+   63  sudo restorecon -Rv /mephi-web
+   64  sudo touch /mephi-web/index.html
+   65  sudo nano /mephi-web/index.html 
+   66  ls -ldZ /mephi-web
+   67  curl http://localhost/
+   68  sudo nano /etc/nginx/nginx.conf
+   69  sudo nginx -s reload 
+   70  curl http://localhost/
+   71  sudo nano /etc/nginx/nginx.conf
+   72  sudo nginx -s reload 
+   73* curl 
+   74  sudo nano /etc/nginx/nginx.conf
+   75  sudo nginx -t
+   76  sudo systemctl restart nginx
+   77  curl http://localhost/
+   78  sudo systemctl restart nginx
+   79  sudo nano /etc/nginx/nginx.conf
+   80  ls -l /mephi-web/
+   81  sudo nginx -t
+   82  sudo systemctl restart nginx
+   83  curl http://localhost/
+   84  sudo curl http://localhost/
+   85  ls -Z /mephi-web/index.html 
+   86  ls -Zd /mephi-web/ 
+   87  curl http://localhost/
+   88  sudo semanage fcontext -a -t httpd_sys_content_t "/mephi-web(/.*)?"
+   89  sudo restorecom -Rv /mephi-web
+   90  sudo restorecon -Rv /mephi-web
+   91  ls -Zd /mephi-web/ 
+   92  ls -Z /mephi-web/index.html 
+   93  sudo systemctl restart nginx
+   94  curl http://localhost/
+   95  sudo chage -M 90 user1
+   96  sudo chage -M 90 user2
+   97  sudo chage -M 90 user3
+   98  sudo chage -M 90 curator1
+   99  sudo chage -M 90 curator2
+  100  sudo nano /etc/security/access.conf 
+  101  sudo nano /etc/security/pwquality.conf
+  102  sudo nano /etc/pam.d/login 
+  103  sudo nano /etc/login.defs 
+  104  sudo nano /etc/passwd
+  105  sudo history > ./history.out
+  106  sudo history >./history.out
+  107  sudo history >~/history.out
+  108  sudo history > ~/history.out
+  109  history > ~/history.out

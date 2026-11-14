@@ -102,8 +102,4 @@
   102  sudo nano /etc/pam.d/login 
   103  sudo nano /etc/login.defs 
   104  sudo nano /etc/passwd
-  105  sudo history > ./history.out
-  106  sudo history >./history.out
-  107  sudo history >~/history.out
-  108  sudo history > ~/history.out
-  109  history > ~/history.out
+  105  history > ~/history.out
